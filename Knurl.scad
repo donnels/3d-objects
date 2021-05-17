@@ -1,9 +1,9 @@
 diam=9;
-diamOut=16;
+diamOut=14.4;
 holeDiam=5;
 height=8.2;
 $fn=100;
-knurlNum=9;
+knurlNum=8;
 knurlInc=360/knurlNum;
 knurlDiam=4;
 insetHeight=5;
@@ -16,7 +16,7 @@ difference(){
     union(){
         cylinder(h=height, d=diamOut);
         translate([0,0,height]){
-        cylinder(h=totalHeight-height,r1=8,r2=6);
+        cylinder(h=totalHeight-height,r1=7.2,r2=5);
         }
     }
     translate([0,0,-.5])
