@@ -15,3 +15,6 @@ A collection of simple 3D object experiments
     - Replacement foot
 - Monitor connector broke (USB monitor)
     - housing for new control board to re-use panel as HDMI monitor
+- Axle for filament roller
+    - didn't have a screw handy created axle as quick and dirty stand in (still standing in)
+    - hot melted end to fasten
