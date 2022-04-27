@@ -11,43 +11,43 @@ module GSM_BLE(color=color_def) {
 }
 module GSM_Breakout(color=color_def) {
 	color(color)
-	translate([0,0,0.4])
+	translate([0,0,5])
 		import("Xadow___GSM_Breakout_v1_collapsed.stl");
 }
 module Basic_Sensors(color=color_def) {
 	color(color)
-	translate([-11.4,-22.8,0.4])
+	translate([-11.4,-22.8,10])
 		import("Xadow_Basic_Sensors_v1_collapsed.stl");
 }
 module Duino(color=color_def) {
 	color(color)
-	translate([43.85,9.55,0.4])
+	translate([43.85,9.55,15])
 	rotate([0,0,180])
 		import("Xadow_Duino_v1_collapsed.stl");
 }
 module GPS(color=color_def) {
 	color(color)
-	translate([-12.05,-10.77,0.4])
+	translate([-12.05,-10.77,20])
 		import("Xadow_GPS_v2_collapsed.stl");
 }
 module LED_5x7(color=color_def) {
 	color(color)
-	translate([-3.28,-15.98,0.4])
+	translate([-3.28,-15.98,25])
 		import("Xadow_LED_5x7_v1_collapsed.stl");
 }
 module NFC(color=color_def) {
 	color(color)
-	translate([-12.05,-10.77,0.4])
+	translate([-12.05,-10.77,30])
 		import("Xadow_NFC_v2_collapsed.stl");
 }
 module 1_54_Touhscreen(color=color_def) {
 	color(color)
-	translate([-50,0,0])
+	translate([-50,0,-5])
 		import("Xadow_1_54_Touhscreen_collapsed.stl");
 }
 module Audio(color=color_def) {
 	color(color)
-	translate([-91.42,-45.06,0.4])
+	translate([-91.42,-45.06,35])
 		import("Xadow_Audio_v1.stl");
 }
 
@@ -55,7 +55,7 @@ module Audio(color=color_def) {
 //-----------------------------
 // Line them up :)
 
-GSM_BLE([0.7,0.7,0.2]);
+GSM_BLE();
 GSM_Breakout();
 Basic_Sensors();
 Duino();
