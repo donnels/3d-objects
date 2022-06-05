@@ -24,3 +24,6 @@ module tab1(){
 
 tab1();
 //hello oscar
+//hello world
+//how are you?
+//i am cool
