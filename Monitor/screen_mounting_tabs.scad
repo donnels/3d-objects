@@ -9,7 +9,7 @@ hole_d=2;
 tab1_hole_spacing=8;
 tab2_hole_spacing=6;
 shim_height=tab2bottom-tab_height;
-shim_depth=7;
+shim_depth=6;
 shim_width=18;
 
 module tab1(spacing){
