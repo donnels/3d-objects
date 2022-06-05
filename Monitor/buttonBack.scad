@@ -1,6 +1,6 @@
 $fn=100;
 holeEndD=16.1;
-holeLength=116.1;
+holeLength=120.1;
 buttonHolderHeight=.5;
 
 hull(){
