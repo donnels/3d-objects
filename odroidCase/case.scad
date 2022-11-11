@@ -1,7 +1,8 @@
 caseRim=3;
-
+holdersR=.3;
+$fn=100;
 kbD=82;
-kbW=255;
+kbW=210;
 kbH=7;
 
 odH=10;
@@ -41,32 +42,35 @@ odDPD=67-14;
 odDPoffY=14;
 odDPoffX=odBRoffX;
 
-*translate([0,0,-15]) difference(){
-    cube([kbW,kbD,kbH]+[caseRim,caseRim,caseRim]);
-    translate([caseRim/2,caseRim/2,-.1])
-        cube([kbW,kbD,kbH+.1]);
-}
-
-*translate([0,0,0]) difference(){
-    cube([odW,odD,odH]+[caseRim,caseRim,caseRim]);
-    translate([caseRim/2,caseRim/2,caseRim+.1])
-        cube([odW,odD,odH+.1]);
-}
-
 difference(){
     translate([0,0,0]) difference(){
         cube([odW,odD,odH]+[caseRim,caseRim,odJSH-.05]);
         translate([caseRim/2,caseRim/2,odJSH-.1])
             cube([odW,odD,odH+.1]);
     }
-    translate([.5,.5,-.001]) union() {
+    translate([1.5,.75,-.001]) union() {
         translate([odW-odJSR*2-odJSoffX,odJSoffY,0]+[odJSR,odJSR,0]) cylinder(h=odJSH,r=odJSR);
         translate([odW-odBRW-odBRoffX,odBRoffY,0]) cube([odBRW,odBRD,odJSH]);  
         translate([odW-odCRW-odCRoffX,odCRoffY,0]) cube([odCRW,odCRW,odJSH]);  
-        #translate([odW-odTBW-odTBoffX,odTBoffY,0]) cube([odTBW,odTBW,odJSH]);  
+        translate([odW-odTBW-odTBoffX,odTBoffY,0]) cube([odTBW,odTBW,odJSH]);  
         translate([odW-odTLW-odTLoffX,odTLoffY,odJSH-.1]) cube([odTLW,odTLD,odTH]); 
         translate([odW-odTRW-odTRoffX,odTRoffY,odJSH-.1]) cube([odTRW,odTRD,odTH]); 
         translate([odW-odDPW-odDPoffX,odDPoffY,0]) cube([odDPW,odDPD,odJSH]); 
     }
 }
 
+translate([20,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
+translate([odW-18,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
+translate([odW-18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
+translate([+18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
+translate([caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+translate([odW+caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+translate([odW+caseRim/2+13.5,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+translate([odW+caseRim/2++36,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+
+translate ([odW+caseRim,0,0]) 
+difference () {
+	cube ([37,odD+caseRim,odH+odJSH]);
+	translate ([0,-.05,3]) cube ([12,odD+caseRim+.1,odH+odJSH]);
+	translate ([12+3,-.05,3]) cube ([19.5,odD+caseRim+.1,odH+odJSH]);
+}
