@@ -1,5 +1,5 @@
 caseRim=3;
-holdersR=.3;
+holdersR=.7;
 $fn=100;
 kbD=82;
 kbW=210;
@@ -13,7 +13,6 @@ odJSW=28-13;
 odJSR=odJSW/2;
 odJSoffX=13;
 odJSoffY=11;
-
 
 odJSH=6;
 odBRW=118-38;
@@ -58,19 +57,33 @@ difference(){
         translate([odW-odDPW-odDPoffX,odDPoffY,0]) cube([odDPW,odDPD,odJSH]); 
     }
 }
-
-translate([20,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
-translate([odW-18,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
-translate([odW-18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
-translate([+18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
-translate([caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-translate([odW+caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-translate([odW+caseRim/2+13.5,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-translate([odW+caseRim/2++36,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+union(){
+	translate([20,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([odW-18,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([odW-18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([+18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([odW+caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([odW+caseRim/2+13.5,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+	translate([odW+caseRim/2++36,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
+}
 
 translate ([odW+caseRim,0,0]) 
-difference () {
-	cube ([37,odD+caseRim,odH+odJSH]);
-	translate ([0,-.05,3]) cube ([12,odD+caseRim+.1,odH+odJSH]);
-	translate ([12+3,-.05,3]) cube ([19.5,odD+caseRim+.1,odH+odJSH]);
+	difference () {
+		cube ([37,odD+caseRim,odH+odJSH]);
+		translate ([0,-.05,3]) cube ([12,odD+caseRim+.1,odH+odJSH]);
+		translate ([12+3,-.05,3]) cube ([19.5,odD+caseRim+.1,odH+odJSH]);
+	}
+	
+cornerR=caseRim/4;
+#translate([0,0,30]) hull() {
+	translate([cornerR,cornerR,0+cornerR]) sphere(r=cornerR);
+	translate([cornerR,cornerR,odH+odJSH-cornerR]) sphere(r=cornerR);
+	translate([cornerR,2*cornerR+odD,0+cornerR]) sphere(r=cornerR);
+	translate([cornerR,2*cornerR+odD,odH+odJSH-cornerR]) sphere(r=cornerR);
+	translate([odW+cornerR,2*cornerR+odD,odH+odJSH-cornerR]) sphere(r=cornerR);
+	translate([odW+cornerR,2*cornerR+odD,0+cornerR]) sphere(r=cornerR);
+	translate([odW+cornerR,cornerR,0+cornerR]) sphere(r=cornerR);
+	translate([odW+cornerR,cornerR,odH+odJSH-cornerR]) sphere(r=cornerR);
+
 }
