@@ -1,3 +1,4 @@
+include <Library-container.scad>
 caseRim=3;
 holdersR=.7;
 $fn=100;
@@ -41,36 +42,27 @@ odDPD=67-14;
 odDPoffY=14;
 odDPoffX=odBRoffX;
 
+//the odroid travel case with cutouts for buttons etc
 difference(){
-    translate([0,0,0]) difference(){
-        cube([odW,odD,odH]+[caseRim,caseRim,odJSH-.05]);
-        translate([caseRim/2,caseRim/2,odJSH-.1])
-            cube([odW,odD,odH+.1]);
-    }
-    translate([1.5,.75,-.001]) union() {
-        translate([odW-odJSR*2-odJSoffX,odJSoffY,0]+[odJSR,odJSR,0]) cylinder(h=odJSH,r=odJSR);
-        translate([odW-odBRW-odBRoffX,odBRoffY,0]) cube([odBRW,odBRD,odJSH]);  
-        translate([odW-odCRW-odCRoffX,odCRoffY,0]) cube([odCRW,odCRW,odJSH]);  
-        translate([odW-odTBW-odTBoffX,odTBoffY,0]) cube([odTBW,odTBW,odJSH]);  
-        translate([odW-odTLW-odTLoffX,odTLoffY,odJSH-.1]) cube([odTLW,odTLD,odTH]); 
-        translate([odW-odTRW-odTRoffX,odTRoffY,odJSH-.1]) cube([odTRW,odTRD,odTH]); 
-        translate([odW-odDPW-odDPoffX,odDPoffY,0]) cube([odDPW,odDPD,odJSH]); 
+	//the container itself
+	translate([caseRim/2,caseRim/2,odJSH]) containerOpenLid(odW,odD,odH,caseRim,odJSH-caseRim,"nibY",.6);
+	offset=.01;
+	//the cutouts
+    translate([1.5,.75,-offset/2]) union() {
+        translate([odW-odJSR*2-odJSoffX,odJSoffY,0]+[odJSR,odJSR,0]) cylinder(h=odJSH+offset,r=odJSR);
+        translate([odW-odBRW-odBRoffX,odBRoffY,0]) cube([odBRW,odBRD,odJSH+offset]);  
+        translate([odW-odCRW-odCRoffX,odCRoffY,0]) cube([odCRW,odCRW,odJSH+offset]);  
+        translate([odW-odTBW-odTBoffX,odTBoffY,0]) cube([odTBW,odTBW,odJSH+offset]);  
+        translate([odW-odTLW-odTLoffX,odTLoffY,odJSH-.1]) cube([odTLW,odTLD,odTH+offset]); 
+        translate([odW-odTRW-odTRoffX,odTRoffY,odJSH-.1]) cube([odTRW,odTRD,odTH+offset]); 
+        translate([odW-odDPW-odDPoffX,odDPoffY,0]) cube([odDPW,odDPD,odJSH+offset]); 
     }
 }
-union(){
-	translate([20,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([odW-18,caseRim/2,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([odW-18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([+18,caseRim/2+odD,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([odW+caseRim/2,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([odW+caseRim/2+13.5,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-	translate([odW+caseRim/2++36,odD/2,odJSH]) cylinder(h=odH,r=holdersR);
-}
-
-translate ([odW+caseRim,0,0]) 
-	difference () {
-		cube ([37,odD+caseRim,odH+odJSH]);
-		translate ([0,-.05,3]) cube ([12,odD+caseRim+.1,odH+odJSH]);
-		translate ([12+3,-.05,3]) cube ([19.5,odD+caseRim+.1,odH+odJSH]);
-	}
+//add on some slots for peripherals 
+floorDepth=0;
+//microuter slot
+translate([caseRim/2+caseRim+odW,caseRim/2,floorDepth]) 
+	containerVertSlot(12,odD,odH+odJSH,caseRim,floorDepth-caseRim,"nibY",.6);
+//micro USB 3 Port Hub
+translate([caseRim/2+2*caseRim+odW+12,caseRim/2,floorDepth]) 
+	containerVertSlot(19.5,odD,odH+odJSH,caseRim,floorDepth-caseRim,"nibY",.6);
