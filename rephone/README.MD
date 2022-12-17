@@ -1,8 +1,0 @@
-# rephone components and case design
-
-Stl files added from thingiverse
-
-Scad file also as holder for stls from thingiverse
-
-Reference material only for now
-
